@@ -1,0 +1,2437 @@
+\documentclass{article}
+\usepackage[paperheight=8in,paperwidth=8in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.text}
+\pagenumbering{gobble}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GENE COORDINATES AND SIZES
+% > zcat ~/Downloads/GCF_000001405.39_GRCh38.p13_genomic.gff.gz |awk '$1=="NC_012920.1" && $3=="gene"' | awk '{print $4, $5-$4, $7, $9}' | sed -e 's,ID=gene-,,' -e 's,;.*,,' | awk '{print "\\def \\"$4"start {"$1*360/16569"}\n\\def \\"$4"size {"$2*360/16569"}\n\\def \\"$4"name {"$4"}" }' | sed -e 's/,/./g' -e 's,{TRN,{,'
+\def \TRNFstart {12.5367}
+\def \TRNFsize {1.52091}
+\def \TRNFname {F}
+\def \RNRIstart {14.0793}
+\def \RNRIsize {20.7061}
+\def \RNRIname {rRNA 12s}
+\def \TRNVstart {34.8072}
+\def \TRNVsize {1.47746}
+\def \TRNVname {V}
+\def \RNRIIstart {36.3064}
+\def \RNRIIsize {33.8512}
+\def \RNRIIname {rRNA 16s}
+\def \TRNLIstart {70.1793}
+\def \TRNLIsize {1.60782}
+\def \TRNLIname {L}
+\def \NDIstart {71.8523}
+\def \NDIsize {20.7496}
+\def \NDIname {ND1}
+\def \TRNIstart {92.6236}
+\def \TRNIsize {1.47746}
+\def \TRNIname {I}
+\def \TRNQstart {94.0576}
+\def \TRNQsize {1.54264}
+\def \TRNQname {Q}
+\def \TRNMstart {95.6437}
+\def \TRNMsize {1.45573}
+\def \TRNMname {M}
+\def \NDIIstart {97.1211}
+\def \NDIIsize {22.6181}
+\def \NDIIname {ND2}
+\def \TRNWstart {119.761}
+\def \TRNWsize {1.45573}
+\def \TRNWname {W}
+\def \TRNAstart {121.391}
+\def \TRNAsize {1.47746}
+\def \TRNAname {A}
+\def \TRNNstart {122.911}
+\def \TRNNsize {1.56437}
+\def \TRNNname {N}
+\def \TRNCstart {125.171}
+\def \TRNCsize {1.41228}
+\def \TRNCname {C}
+\def \TRNYstart {126.583}
+\def \TRNYsize {1.41228}
+\def \TRNYname {Y}
+\def \COXIstart {128.278}
+\def \COXIsize {33.4818}
+\def \COXIname {COX1}
+\def \TRNSIstart {161.782}
+\def \TRNSIsize {1.47746}
+\def \TRNSIname {S}
+\def \TRNDstart {163.346}
+\def \TRNDsize {1.45573}
+\def \TRNDname {D}
+\def \COXIIstart {164.823}
+\def \COXIIsize {14.8398}
+\def \COXIIname {COX2}
+\def \TRNKstart {180.228}
+\def \TRNKsize {1.49919}
+\def \TRNKname {K}
+\def \ATPVIIIstart {181.771}
+\def \ATPVIIIsize {4.47583}
+\def \ATPVIIIname {ATP8}
+\def \ATPVIstart {185.269}
+\def \ATPVIsize {14.7746}
+\def \ATPVIname {ATP6}
+\def \COXIIIstart {200.043}
+\def \COXIIIsize {17.0125}
+\def \COXIIIname {COX3}
+\def \TRNGstart {217.078}
+\def \TRNGsize {1.45573}
+\def \TRNGname {G}
+\def \NDIIIstart {218.555}
+\def \NDIIIsize {7.49593}
+\def \NDIIIname {ND3}
+\def \TRNRstart {226.073}
+\def \TRNRsize {1.39055}
+\def \TRNRname {R}
+\def \NDIVLstart {227.485}
+\def \NDIVLsize {6.43129}
+\def \NDIVLname {ND4L}
+\def \NDIVstart {233.786}
+\def \NDIVsize {29.9185}
+\def \NDIVname {ND4}
+\def \TRNHstart {263.726}
+\def \TRNHsize {1.47746}
+\def \TRNHname {H}
+\def \TRNSIIstart {265.225}
+\def \TRNSIIsize {1.26018}
+\def \TRNSIIname {S}
+\def \TRNLIIstart {266.507}
+\def \TRNLIIsize {1.52091}
+\def \TRNLIIname {L}
+\def \NDVstart {268.05}
+\def \NDVsize {39.3482}
+\def \NDVname {ND5}
+\def \NDVIstart {307.42}
+\def \NDVIsize {11.3851}
+\def \NDVIname {ND6}
+\def \TRNEstart {318.827}
+\def \TRNEsize {1.47746}
+\def \TRNEname {E}
+\def \CYTBstart {320.413}
+\def \CYTBsize {24.7691}
+\def \CYTBname {CYTB}
+\def \TRNTstart {345.204}
+\def \TRNTsize {1.41228}
+\def \TRNTname {T}
+\def \TRNPstart {346.681}
+\def \TRNPsize {1.45573}
+\def \TRNPname {P}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% GENE COLORS
+\def \trnacolor {lime}
+\def \mtcybcolor {cyan}
+\def \mtndcolor {blue}
+\def \mtatpcolor {teal}
+\def \mtcoIcolor {violet}
+\def \mtcoIIcolor {violet}
+\def \mtcoIcolor {violet}
+\def \mtcoIIIcolor {violet}
+\def \mtrnrcolor {orange}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% MITOCHONDRIAL RADIUSES
+\def \astr {90}
+\def \afin {90}
+\def \router {70} % outer radius
+\def \rinner {60} % inner radius
+\def \ginner {70} % gene inner
+\def \gouter {75} % gene outer
+\def \tinner {75} % text inner
+\def \touter {76} % text outer
+\def \iginner {62} % gene inner
+\def \igouter {57} % gene outer
+\def \itinner {60} % text inner
+\def \itouter {55} % text outer
+
+	\begin{figure}
+		\begin{center}
+			\begin{tikzpicture}
+\coordinate (c1) at (0,0);
+\node at (0, 0) (a) {\Huge \textbf{mtDNA}};
+\node at (0, -0.7) (a) {\Huge \textbf{double helix}};
+
+%%%%%%%%%%%%%%%%%%%%
+% WHOLE MITOCHONDRIA
+\draw[fill=pink]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+\draw[line width=3mm, red]
+ ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+-- cycle;
+\draw[line width=0.25mm, red]
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;			
+			\end{tikzpicture}
+		\end{center}
+	\end{figure}
+	\newpage
+	\begin{figure}
+		\begin{center}
+			\begin{tikzpicture}
+
+\coordinate (c1) at (0,0);
+%\node at (0, 0) (a) {\Huge mtDNA};
+\node at (0, 0) (a) {\Huge \textbf{22 tRNAs}};
+
+%%%%%%%%%%%%%%%%%%%%
+% WHOLE MITOCHONDRIA
+\draw[fill=pink]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+\draw[line width=3mm, red]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+-- cycle;
+\draw[line width=0.25mm, red]
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+
+%%%%%%%%
+% tRNAs
+
+% MTTF
+% outer strand
+\def \shift {\TRNFstart} % shift
+\def \size {\TRNFsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNFname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTV
+% outer strand
+\def \shift {\TRNVstart} % shift
+\def \size {\TRNVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNVname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTLI
+% outer strand
+\def \shift {\TRNLIstart} % shift
+\def \size {\TRNLIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNLIname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTI
+% outer strand
+\def \shift {\TRNIstart} % shift
+\def \size {\TRNIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNIname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTM
+% outer strand
+\def \shift {\TRNMstart} % shift
+\def \size {\TRNMsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNMname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTW
+% outer strand
+\def \shift {\TRNWstart} % shift
+\def \size {\TRNWsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str-1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNWname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTD
+% outer strand
+\def \shift {\TRNDstart} % shift
+\def \size {\TRNDsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNDname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTK
+% outer strand
+\def \shift {\TRNKstart} % shift
+\def \size {\TRNKsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNKname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTG
+% outer strand
+\def \shift {\TRNGstart} % shift
+\def \size {\TRNGsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} % text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNGname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTR
+% outer strand
+\def \shift {\TRNRstart} % shift
+\def \size {\TRNRsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNRname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTH
+% outer strand
+\def \shift {\TRNHstart} % shift
+\def \size {\TRNHsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNHname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTS
+% outer strand
+\def \shift {\TRNSIIstart} % shift
+\def \size {\TRNSIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNSIIname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTL2
+% outer strand
+\def \shift {\TRNLIIstart} % shift
+\def \size {\TRNLIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNLIIname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTT
+% outer strand
+\def \shift {\TRNTstart} % shift
+\def \size {\TRNTsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNTname}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTTP
+% inner strand
+\def \shift {\TRNPstart} % shift
+\def \size {\TRNPsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNPname}}]
+($(c1) + (\tstr:\itouter mm)$) arc (\tstr:\tfin:\itouter mm)
+--
+($(c1) + (\tfin:\itinner mm)$) arc (\tfin:\tstr:\itinner mm)
+-- cycle;
+
+% MTTE
+% inner strand
+\def \shift {\TRNEstart} % shift
+\def \size {\TRNEsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNEname}}]
+($(c1) + (\tstr:\itouter mm)$) arc (\tstr:\tfin:\itouter mm)
+--
+($(c1) + (\tfin:\itinner mm)$) arc (\tfin:\tstr:\itinner mm)
+-- cycle;
+
+% MTTSI
+% inner strand
+\def \shift {\TRNSIstart} % shift
+\def \size {\TRNSIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNSIname}}]
+($(c1) + (\tstr:\itouter mm)$) arc (\tstr:\tfin:\itouter mm)
+--
+($(c1) + (\tfin:\itinner mm)$) arc (\tfin:\tstr:\itinner mm)
+-- cycle;
+
+% MTTY
+% inner strand
+\def \shift {\TRNYstart} % shift
+\def \size {\TRNYsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNYname}}]
+($(c1) + (\tstr:\itouter mm)$) arc (\tstr:\tfin:\itouter mm)
+--
+($(c1) + (\tfin:\itinner mm)$) arc (\tfin:\tstr:\itinner mm)
+-- cycle;
+
+% MTTC
+% inner strand
+\def \shift {\TRNCstart} % shift
+\def \size {\TRNCsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNCname}}]
+($(c1) + (\tstr:\itouter mm)$) arc (\tstr:\tfin:\itouter mm)
+--
+($(c1) + (\tfin:\itinner mm)$) arc (\tfin:\tstr:\itinner mm)
+-- cycle;
+
+% MTTN
+% inner strand
+\def \shift {\TRNNstart} % shift
+\def \size {\TRNNsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNNname}}]
+($(c1) + (\tstr:\itouter mm)$) arc (\tstr:\tfin:\itouter mm)
+--
+($(c1) + (\tfin:\itinner mm)$) arc (\tfin:\tstr:\itinner mm)
+-- cycle;
+
+% MTTA
+% inner strand
+\def \shift {\TRNAstart} % shift
+\def \size {\TRNAsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNAname}}]
+($(c1) + (\tstr:\itouter mm)$) arc (\tstr:\tfin:\itouter mm)
+--
+($(c1) + (\tfin:\itinner mm)$) arc (\tfin:\tstr:\itinner mm)
+-- cycle;
+
+% MTTQ
+% inner strand
+\def \shift {\TRNQstart} % shift
+\def \size {\TRNQsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path,text={\TRNQname}}]
+($(c1) + (\tstr:\itouter mm)$) arc (\tstr:\tfin:\itouter mm)
+--
+($(c1) + (\tfin:\itinner mm)$) arc (\tfin:\tstr:\itinner mm)
+-- cycle;
+
+			\end{tikzpicture}
+		\end{center}
+	\end{figure}
+	\newpage
+	\begin{figure}
+		\begin{center}
+			\begin{tikzpicture}
+
+\coordinate (c1) at (0,0);
+%\node at (0, 0) (a) {\Large mtDNA};
+\node at (0, 0) (a) {\Huge \textbf{13 mRNAs}};
+
+%%%%%%%%%%%%%%%%%%%%
+% WHOLE MITOCHONDRIA
+\draw[fill=pink]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+\draw[line width=5mm, red]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+-- cycle;
+\draw[line width=0.25mm, red]
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+
+%%%%%%%%
+% tRNAs
+
+% MTTF
+% outer strand
+\def \shift {\TRNFstart} % shift
+\def \size {\TRNFsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTV
+% outer strand
+\def \shift {\TRNVstart} % shift
+\def \size {\TRNVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTLI
+% outer strand
+\def \shift {\TRNLIstart} % shift
+\def \size {\TRNLIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTI
+% outer strand
+\def \shift {\TRNIstart} % shift
+\def \size {\TRNIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTM
+% outer strand
+\def \shift {\TRNMstart} % shift
+\def \size {\TRNMsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTW
+% outer strand
+\def \shift {\TRNWstart} % shift
+\def \size {\TRNWsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str-1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTD
+% outer strand
+\def \shift {\TRNDstart} % shift
+\def \size {\TRNDsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTK
+% outer strand
+\def \shift {\TRNKstart} % shift
+\def \size {\TRNKsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTG
+% outer strand
+\def \shift {\TRNGstart} % shift
+\def \size {\TRNGsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} % text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTR
+% outer strand
+\def \shift {\TRNRstart} % shift
+\def \size {\TRNRsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTH
+% outer strand
+\def \shift {\TRNHstart} % shift
+\def \size {\TRNHsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTS
+% outer strand
+\def \shift {\TRNSIIstart} % shift
+\def \size {\TRNSIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTL2
+% outer strand
+\def \shift {\TRNLIIstart} % shift
+\def \size {\TRNLIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTT
+% outer strand
+\def \shift {\TRNTstart} % shift
+\def \size {\TRNTsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTP
+% inner strand
+\def \shift {\TRNPstart} % shift
+\def \size {\TRNPsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTE
+% inner strand
+\def \shift {\TRNEstart} % shift
+\def \size {\TRNEsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTSI
+% inner strand
+\def \shift {\TRNSIstart} % shift
+\def \size {\TRNSIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTY
+% inner strand
+\def \shift {\TRNYstart} % shift
+\def \size {\TRNYsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTC
+% inner strand
+\def \shift {\TRNCstart} % shift
+\def \size {\TRNCsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTN
+% inner strand
+\def \shift {\TRNNstart} % shift
+\def \size {\TRNNsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTA
+% inner strand
+\def \shift {\TRNAstart} % shift
+\def \size {\TRNAsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTQ
+% inner strand
+\def \shift {\TRNQstart} % shift
+\def \size {\TRNQsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+
+%%%%%%%%
+% mRNAS
+% MTCYB
+% outer strand
+\def \shift {\CYTBstart} % shift
+\def \size {\CYTBsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcybcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\CYTBname}, text align={align=left,left indent=1cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND5
+% outer strand
+\def \shift {\NDVstart} % shift
+\def \size {\NDVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDVname}, text align={align=left,left indent=2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND4
+% outer strand
+\def \shift {\NDIVstart} % shift
+\def \size {\NDIVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIVname}, text align={align=left,left indent=1.5cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND4L
+% outer strand
+\def \shift {\NDIVLstart} % shift
+\def \size {\NDIVLsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIVLname}, text align={align=left,left indent=0cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTCOXIII
+% outer strand
+\def \shift {\COXIIIstart} % shift
+\def \size {\COXIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\COXIIIname}, text align={align=left,left indent=0.5cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTCOXII
+% outer strand
+\def \shift {\COXIIstart} % shift
+\def \size {\COXIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\COXIIname}, text align={align=left,left indent=0.5cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTCOXI
+% outer strand
+\def \shift {\COXIstart} % shift
+\def \size {\COXIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\COXIname}, text align={align=left,left indent=2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND3
+% outer strand
+\def \shift {\NDIIIstart} % shift
+\def \size {\NDIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIIIname}, text align={align=left,left indent=0.2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND2
+% outer strand
+\def \shift {\NDIIstart} % shift
+\def \size {\NDIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIIname}, text align={align=left,left indent=1.2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND6
+% inner strand
+\def \shift {\NDVIstart} % shift
+\def \size {\NDVIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDVIname}, text align={align=left,left indent=0.2cm}}]
+($(c1) + (\tstr:53 mm)$) arc (\tstr:\tfin:53 mm)
+--
+($(c1) + (\tfin:40 mm)$) arc (\tfin:\tstr:40 mm)
+-- cycle;
+
+% MTND1
+% outer strand
+\def \shift {\NDIstart} % shift
+\def \size {\NDIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIname}, text align={align=left,left indent=1.2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTATP6
+% outer strand
+\def \shift {\ATPVIstart} % shift
+\def \size {\ATPVIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtatpcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\ATPVIname}, text align={align=left,left indent=0.5cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTATP6
+% outer strand
+\def \shift {\ATPVIIIstart} % shift
+\def \size {\ATPVIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+2} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtatpcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\ATPVIIIname}, text align={align=left,left indent=0cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+			\end{tikzpicture}
+		\end{center}
+	\end{figure}
+	\newpage
+	\begin{figure}
+		\begin{center}
+			\begin{tikzpicture}
+
+\coordinate (c1) at (0,0);
+%\node at (0, 0) (a) {\Large mtDNA};
+\node at (0, 0) (a) {\Huge \textbf{two rRNAs}};
+
+%%%%%%%%%%%%%%%%%%%%
+% WHOLE MITOCHONDRIA
+\draw[fill=pink]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+\draw[line width=3mm, red]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+-- cycle;
+\draw[line width=0.25mm, red]
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+
+%%%%%%%%
+% tRNAs
+
+% MTTF
+% outer strand
+\def \shift {\TRNFstart} % shift
+\def \size {\TRNFsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTV
+% outer strand
+\def \shift {\TRNVstart} % shift
+\def \size {\TRNVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTLI
+% outer strand
+\def \shift {\TRNLIstart} % shift
+\def \size {\TRNLIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTI
+% outer strand
+\def \shift {\TRNIstart} % shift
+\def \size {\TRNIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTM
+% outer strand
+\def \shift {\TRNMstart} % shift
+\def \size {\TRNMsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTW
+% outer strand
+\def \shift {\TRNWstart} % shift
+\def \size {\TRNWsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str-1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTD
+% outer strand
+\def \shift {\TRNDstart} % shift
+\def \size {\TRNDsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTK
+% outer strand
+\def \shift {\TRNKstart} % shift
+\def \size {\TRNKsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTG
+% outer strand
+\def \shift {\TRNGstart} % shift
+\def \size {\TRNGsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} % text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTR
+% outer strand
+\def \shift {\TRNRstart} % shift
+\def \size {\TRNRsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTH
+% outer strand
+\def \shift {\TRNHstart} % shift
+\def \size {\TRNHsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTS
+% outer strand
+\def \shift {\TRNSIIstart} % shift
+\def \size {\TRNSIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTL2
+% outer strand
+\def \shift {\TRNLIIstart} % shift
+\def \size {\TRNLIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTT
+% outer strand
+\def \shift {\TRNTstart} % shift
+\def \size {\TRNTsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTP
+% inner strand
+\def \shift {\TRNPstart} % shift
+\def \size {\TRNPsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTE
+% inner strand
+\def \shift {\TRNEstart} % shift
+\def \size {\TRNEsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTSI
+% inner strand
+\def \shift {\TRNSIstart} % shift
+\def \size {\TRNSIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTY
+% inner strand
+\def \shift {\TRNYstart} % shift
+\def \size {\TRNYsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTC
+% inner strand
+\def \shift {\TRNCstart} % shift
+\def \size {\TRNCsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTN
+% inner strand
+\def \shift {\TRNNstart} % shift
+\def \size {\TRNNsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTA
+% inner strand
+\def \shift {\TRNAstart} % shift
+\def \size {\TRNAsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTQ
+% inner strand
+\def \shift {\TRNQstart} % shift
+\def \size {\TRNQsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+
+%%%%%%%%
+% mRNAS
+% MTCYB
+% outer strand
+\def \shift {\CYTBstart} % shift
+\def \size {\CYTBsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcybcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\CYTBname}, text align={align=left,left indent=1cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND5
+% outer strand
+\def \shift {\NDVstart} % shift
+\def \size {\NDVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDVname}, text align={align=left,left indent=2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND4
+% outer strand
+\def \shift {\NDIVstart} % shift
+\def \size {\NDIVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIVname}, text align={align=left,left indent=1.5cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND4L
+% outer strand
+\def \shift {\NDIVLstart} % shift
+\def \size {\NDIVLsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIVLname}, text align={align=left,left indent=0cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTCOXIII
+% outer strand
+\def \shift {\COXIIIstart} % shift
+\def \size {\COXIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\COXIIIname}, text align={align=left,left indent=0.5cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTCOXII
+% outer strand
+\def \shift {\COXIIstart} % shift
+\def \size {\COXIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\COXIIname}, text align={align=left,left indent=0.5cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTCOXI
+% outer strand
+\def \shift {\COXIstart} % shift
+\def \size {\COXIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\COXIname}, text align={align=left,left indent=2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND3
+% outer strand
+\def \shift {\NDIIIstart} % shift
+\def \size {\NDIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIIIname}, text align={align=left,left indent=0.2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND2
+% outer strand
+\def \shift {\NDIIstart} % shift
+\def \size {\NDIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIIname}, text align={align=left,left indent=1.2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTND6
+% inner strand
+\def \shift {\NDVIstart} % shift
+\def \size {\NDVIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDVIname}, text align={align=left,left indent=0.2cm}}]
+($(c1) + (\tstr:53 mm)$) arc (\tstr:\tfin:53 mm)
+--
+($(c1) + (\tfin:40 mm)$) arc (\tfin:\tstr:40 mm)
+-- cycle;
+
+% MTND1
+% outer strand
+\def \shift {\NDIstart} % shift
+\def \size {\NDIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\NDIname}, text align={align=left,left indent=1.2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTATP6
+% outer strand
+\def \shift {\ATPVIstart} % shift
+\def \size {\ATPVIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtatpcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\ATPVIname}, text align={align=left,left indent=0.5cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+% MTATP6
+% outer strand
+\def \shift {\ATPVIIIstart} % shift
+\def \size {\ATPVIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+2} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtatpcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\ATPVIIIname}, text align={align=left,left indent=0cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+%%%%%%%%
+% rRNAs	
+
+% RNAR 12S
+% outer strand
+\def \shift {\RNRIstart} % shift
+\def \size {\RNRIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+2} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtrnrcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\RNRIname}, text align={align=left,left indent=1cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;	
+
+% RNAR 16S
+% outer strand
+\def \shift {\RNRIIstart} % shift
+\def \size {\RNRIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+2} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtrnrcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+\draw[decorate, decoration={text along path, text={\RNRIIname}, text align={align=left,left indent=2cm}}]
+($(c1) + (\tstr:\touter mm)$) arc (\tstr:\tfin:\touter mm)
+--
+($(c1) + (\tfin:\tinner mm)$) arc (\tfin:\tstr:\tinner mm)
+-- cycle;
+
+			\end{tikzpicture}	
+		\end{center}
+	\end{figure}
+	\newpage
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}
+		\coordinate (c1) at (0,0);
+%\node at (0, 0) (a) {\Large mtDNA};
+\node at (0, 0) (a) {\Huge \textbf{regulatory regions}};
+\node at (0, -0.7) (a) {\Large \textbf{D-loop, promoters, origins of replication}};
+%%%%%%%%%%%%%%%%%%%%
+% WHOLE MITOCHONDRIA
+\draw[fill=pink]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+\draw[line width=3mm, red]
+($(c1) + (0:\router mm)$) arc (0:360:\router mm)
+-- cycle;
+\draw[line width=0.25mm, red]
+($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
+-- cycle;
+
+%%%%%%%%
+% tRNAs
+
+% MTTF
+% outer strand
+\def \shift {\TRNFstart} % shift
+\def \size {\TRNFsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTV
+% outer strand
+\def \shift {\TRNVstart} % shift
+\def \size {\TRNVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTLI
+% outer strand
+\def \shift {\TRNLIstart} % shift
+\def \size {\TRNLIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTI
+% outer strand
+\def \shift {\TRNIstart} % shift
+\def \size {\TRNIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTM
+% outer strand
+\def \shift {\TRNMstart} % shift
+\def \size {\TRNMsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTW
+% outer strand
+\def \shift {\TRNWstart} % shift
+\def \size {\TRNWsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str-1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTD
+% outer strand
+\def \shift {\TRNDstart} % shift
+\def \size {\TRNDsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTK
+% outer strand
+\def \shift {\TRNKstart} % shift
+\def \size {\TRNKsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTG
+% outer strand
+\def \shift {\TRNGstart} % shift
+\def \size {\TRNGsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} % text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTR
+% outer strand
+\def \shift {\TRNRstart} % shift
+\def \size {\TRNRsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTH
+% outer strand
+\def \shift {\TRNHstart} % shift
+\def \size {\TRNHsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTS
+% outer strand
+\def \shift {\TRNSIIstart} % shift
+\def \size {\TRNSIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTL2
+% outer strand
+\def \shift {\TRNLIIstart} % shift
+\def \size {\TRNLIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+1} % text start
+\def \tfin {\str+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTT
+% outer strand
+\def \shift {\TRNTstart} % shift
+\def \size {\TRNTsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTTP
+% inner strand
+\def \shift {\TRNPstart} % shift
+\def \size {\TRNPsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTE
+% inner strand
+\def \shift {\TRNEstart} % shift
+\def \size {\TRNEsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTSI
+% inner strand
+\def \shift {\TRNSIstart} % shift
+\def \size {\TRNSIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTY
+% inner strand
+\def \shift {\TRNYstart} % shift
+\def \size {\TRNYsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTC
+% inner strand
+\def \shift {\TRNCstart} % shift
+\def \size {\TRNCsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTN
+% inner strand
+\def \shift {\TRNNstart} % shift
+\def \size {\TRNNsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTA
+% inner strand
+\def \shift {\TRNAstart} % shift
+\def \size {\TRNAsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTTQ
+% inner strand
+\def \shift {\TRNQstart} % shift
+\def \size {\TRNQsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\str} % text start
+\def \tfin {\fin+1} %text end
+\draw[rounded corners, fill=\trnacolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+
+%%%%%%%%
+% mRNAS
+% MTCYB
+% outer strand
+\def \shift {\CYTBstart} % shift
+\def \size {\CYTBsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcybcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTND5
+% outer strand
+\def \shift {\NDVstart} % shift
+\def \size {\NDVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTND4
+% outer strand
+\def \shift {\NDIVstart} % shift
+\def \size {\NDIVsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTND4L
+% outer strand
+\def \shift {\NDIVLstart} % shift
+\def \size {\NDIVLsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTCOXIII
+% outer strand
+\def \shift {\COXIIIstart} % shift
+\def \size {\COXIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTCOXII
+% outer strand
+\def \shift {\COXIIstart} % shift
+\def \size {\COXIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTCOXI
+% outer strand
+\def \shift {\COXIstart} % shift
+\def \size {\COXIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtcoIIIcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTND3
+% outer strand
+\def \shift {\NDIIIstart} % shift
+\def \size {\NDIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTND2
+% outer strand
+\def \shift {\NDIIstart} % shift
+\def \size {\NDIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTND6
+% inner strand
+\def \shift {\NDVIstart} % shift
+\def \size {\NDVIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
+--
+($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
+-- cycle;
+
+% MTND1
+% outer strand
+\def \shift {\NDIstart} % shift
+\def \size {\NDIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtndcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTATP6
+% outer strand
+\def \shift {\ATPVIstart} % shift
+\def \size {\ATPVIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtatpcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+% MTATP6
+% outer strand
+\def \shift {\ATPVIIIstart} % shift
+\def \size {\ATPVIIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+2} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtatpcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+%%%%%%%%
+% rRNAs	
+
+% RNAR 12S
+% outer strand
+\def \shift {\RNRIstart} % shift
+\def \size {\RNRIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+2} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtrnrcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;	
+
+% RNAR 16S
+% outer strand
+\def \shift {\RNRIIstart} % shift
+\def \size {\RNRIIsize} %size of block
+\def \str {\astr+\shift} % start
+\def \fin {\astr+\shift+\size} % end
+\def \tstr {\fin+2} % text start
+\def \tfin {\str} %text end
+\draw[rounded corners, fill=\mtrnrcolor]
+($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
+--
+($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
+-- cycle;
+
+%%%%%%%%%%%%%%%%%%%%
+% REGULATORY REGIONS
+
+\def \rdloop {80}
+\def \rhsp {88}
+\def \rlsp {55}
+\def \trdloop {82}
+\def \trlsp {50}
+\def \roh {56}
+\def \loh {56}
+\def \troh {52}
+\def \trol {54}
+\def \dlooptext {D-loop}
+\def \regcolor {magenta}
+
+% d loop
+\draw[line width=1.25mm, \regcolor]
+($(c1) + (80:\rdloop mm)$) arc (80:100:\rdloop mm);
+
+\draw[decorate, decoration={text along path, text={|\huge|\dlooptext||}, text align={align=left,left indent=0cm}, reverse path}]
+($(c1) + (82:\trdloop mm)$) arc (82:95:\trdloop mm);
+
+% hsp hsp
+\draw[<-, very thick, \regcolor]
+($(c1) + (102.5:\rhsp mm)$) arc (102:100:\rhsp mm);
+\draw[line width=2, \regcolor]
+($(c1) + (102:\rhsp mm)$) arc (102:100:\rhsp mm);
+\draw[decorate, decoration={text along path, text={|\large|HSP||}, text align={align=left,left indent=0cm}}]
+($(c1) + (102:91 mm)$) arc (102:97:91 mm);
+
+% hsp lsp
+\draw[->, very thick, \regcolor]
+($(c1) + (98:\rlsp mm)$) arc (98:94:\rlsp mm);
+\draw[line width=2, \regcolor]
+($(c1) + (98:\rlsp mm)$) arc (98:94:\rlsp mm);
+\draw[decorate, decoration={text along path, text={|\large|LSP||}, text align={align=left,left indent=0cm}}]
+($(c1) + (98:\trlsp mm)$) arc (98:90:\trlsp mm);
+
+% hsp OH
+\draw[->, very thick, \regcolor]
+($(c1) + (90:\roh mm)$) arc (90:85:\roh mm);
+\draw[line width=2, \regcolor]
+($(c1) + (90:\roh mm)$) arc (90:85:\roh mm);
+\draw[decorate, decoration={text along path, text={|\large|OH||}, text align={align=left,left indent=0cm}}]
+($(c1) + (90:\troh mm)$) arc (90:84:\troh mm);
+
+% hsp OL
+\draw[<-, very thick, \regcolor]
+($(c1) + (220:\loh mm)$) arc (220:215:\loh mm);
+\draw[line width=2, \regcolor]
+($(c1) + (220:\loh mm)$) arc (220:215:\loh mm);
+\draw[decorate, decoration={text along path, text={|\large|OL||}, text align={align=left,left indent=0cm}, reverse path}]
+($(c1) + (220:\trol mm)$) arc (220:215:\trol mm);
+
+		\end{tikzpicture}	
+	\end{center}
+\end{figure}
+\end{document}
