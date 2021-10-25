@@ -132,6 +132,8 @@
 \def \mtcoIcolor {violet}
 \def \mtcoIIIcolor {violet}
 \def \mtrnrcolor {orange}
+\def \opacity {0.5}
+\def \opacityframe {0.2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % MITOCHONDRIAL RADIUSES
@@ -157,14 +159,14 @@
 
 %%%%%%%%%%%%%%%%%%%%
 % WHOLE MITOCHONDRIA
-\draw[fill=pink]
+\draw[fill=pink, opacity=\opacityframe]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
-\draw[line width=3mm, red]
+\draw[line width=3mm, red!40]
  ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 -- cycle;
-\draw[line width=0.25mm, red]
+\draw[line width=0.25mm, red!40]
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;			
 			\end{tikzpicture}
@@ -181,14 +183,14 @@
 
 %%%%%%%%%%%%%%%%%%%%
 % WHOLE MITOCHONDRIA
-\draw[fill=pink]
+\draw[fill=pink, opacity=\opacityframe]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
-\draw[line width=3mm, red]
+\draw[line width=3mm, red!40]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 -- cycle;
-\draw[line width=0.25mm, red]
+\draw[line width=0.25mm, red!40]
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
 
@@ -203,7 +205,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -222,7 +224,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -241,7 +243,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -260,7 +262,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -279,7 +281,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -298,7 +300,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str-1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -317,7 +319,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -336,7 +338,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -355,7 +357,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} % text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -374,7 +376,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -393,7 +395,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -412,7 +414,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -431,7 +433,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -450,7 +452,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -469,7 +471,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -488,7 +490,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -507,7 +509,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -526,7 +528,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -545,7 +547,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -564,7 +566,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -583,7 +585,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -602,7 +604,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -627,14 +629,14 @@
 
 %%%%%%%%%%%%%%%%%%%%
 % WHOLE MITOCHONDRIA
-\draw[fill=pink]
+\draw[fill=pink, opacity=\opacityframe]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
-\draw[line width=5mm, red]
+\draw[line width=5mm, red!40]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 -- cycle;
-\draw[line width=0.25mm, red]
+\draw[line width=0.25mm, red!40]
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
 
@@ -649,7 +651,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -663,7 +665,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -677,7 +679,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -691,7 +693,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -705,7 +707,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -719,7 +721,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str-1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -733,7 +735,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -747,7 +749,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -761,7 +763,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} % text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -789,7 +791,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -803,7 +805,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -817,7 +819,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -831,7 +833,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -845,7 +847,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -859,7 +861,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -873,7 +875,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -887,7 +889,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -901,7 +903,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -915,7 +917,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -929,7 +931,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -943,7 +945,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -960,7 +962,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcybcolor]
+\draw[rounded corners, fill=\mtcybcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -979,7 +981,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -998,7 +1000,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1017,7 +1019,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1036,7 +1038,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1055,7 +1057,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1074,7 +1076,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1093,7 +1095,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1112,7 +1114,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1131,7 +1133,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1150,7 +1152,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1169,7 +1171,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtatpcolor]
+\draw[rounded corners, fill=\mtatpcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1188,7 +1190,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+2} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtatpcolor]
+\draw[rounded corners, fill=\mtatpcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1213,14 +1215,14 @@
 
 %%%%%%%%%%%%%%%%%%%%
 % WHOLE MITOCHONDRIA
-\draw[fill=pink]
+\draw[fill=pink, opacity=\opacityframe]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
-\draw[line width=3mm, red]
+\draw[line width=3mm, red!40]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 -- cycle;
-\draw[line width=0.25mm, red]
+\draw[line width=0.25mm, red!40]
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
 
@@ -1235,7 +1237,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1249,7 +1251,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1263,7 +1265,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1277,7 +1279,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1291,7 +1293,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1305,7 +1307,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str-1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1319,7 +1321,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1333,7 +1335,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1347,7 +1349,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} % text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1361,7 +1363,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1375,7 +1377,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1389,7 +1391,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1403,7 +1405,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1417,7 +1419,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1431,7 +1433,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1445,7 +1447,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1459,7 +1461,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1473,7 +1475,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1487,7 +1489,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1501,7 +1503,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1515,7 +1517,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1529,7 +1531,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1546,7 +1548,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcybcolor]
+\draw[rounded corners, fill=\mtcybcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1565,7 +1567,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1584,7 +1586,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1603,7 +1605,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1622,7 +1624,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1641,7 +1643,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1660,7 +1662,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1679,7 +1681,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1698,7 +1700,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1717,7 +1719,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -1736,7 +1738,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1755,7 +1757,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtatpcolor]
+\draw[rounded corners, fill=\mtatpcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1774,7 +1776,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+2} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtatpcolor]
+\draw[rounded corners, fill=\mtatpcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1796,7 +1798,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+2} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtrnrcolor]
+\draw[rounded corners, fill=\mtrnrcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1815,7 +1817,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+2} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtrnrcolor]
+\draw[rounded corners, fill=\mtrnrcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1839,14 +1841,14 @@
 \node at (0, -0.7) (a) {\Large \textbf{D-loop, promoters, origins of replication}};
 %%%%%%%%%%%%%%%%%%%%
 % WHOLE MITOCHONDRIA
-\draw[fill=pink]
+\draw[fill=pink, opacity=\opacityframe]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
-\draw[line width=3mm, red]
+\draw[line width=3mm, red!40]
 ($(c1) + (0:\router mm)$) arc (0:360:\router mm)
 -- cycle;
-\draw[line width=0.25mm, red]
+\draw[line width=0.25mm, red!40]
 ($(c1) + (360:\rinner mm)$) arc (360:0:\rinner mm)
 -- cycle;
 
@@ -1875,7 +1877,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1889,7 +1891,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1903,7 +1905,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1917,7 +1919,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1931,7 +1933,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str-1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1945,7 +1947,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1959,7 +1961,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1973,7 +1975,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} % text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -1987,7 +1989,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2001,7 +2003,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2015,7 +2017,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2029,7 +2031,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+1} % text start
 \def \tfin {\str+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2043,7 +2045,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2057,7 +2059,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2071,7 +2073,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2085,7 +2087,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2099,7 +2101,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2113,7 +2115,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2127,7 +2129,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2141,7 +2143,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2155,7 +2157,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\str} % text start
 \def \tfin {\fin+1} %text end
-\draw[rounded corners, fill=\trnacolor]
+\draw[rounded corners, fill=\trnacolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2172,7 +2174,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcybcolor]
+\draw[rounded corners, fill=\mtcybcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2186,7 +2188,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2200,7 +2202,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2214,7 +2216,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2228,7 +2230,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2242,7 +2244,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2256,7 +2258,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtcoIIIcolor]
+\draw[rounded corners, fill=\mtcoIIIcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2270,7 +2272,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2284,7 +2286,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2298,7 +2300,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\igouter mm)$) arc (\str:\fin:\igouter mm)
 --
 ($(c1) + (\fin:\iginner mm)$) arc (\fin:\str:\iginner mm)
@@ -2312,7 +2314,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtndcolor]
+\draw[rounded corners, fill=\mtndcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2326,7 +2328,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtatpcolor]
+\draw[rounded corners, fill=\mtatpcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2340,7 +2342,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+2} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtatpcolor]
+\draw[rounded corners, fill=\mtatpcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2357,7 +2359,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+2} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtrnrcolor]
+\draw[rounded corners, fill=\mtrnrcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)
@@ -2371,7 +2373,7 @@
 \def \fin {\astr+\shift+\size} % end
 \def \tstr {\fin+2} % text start
 \def \tfin {\str} %text end
-\draw[rounded corners, fill=\mtrnrcolor]
+\draw[rounded corners, fill=\mtrnrcolor, opacity=\opacity]
 ($(c1) + (\str:\gouter mm)$) arc (\str:\fin:\gouter mm)
 --
 ($(c1) + (\fin:\ginner mm)$) arc (\fin:\str:\ginner mm)

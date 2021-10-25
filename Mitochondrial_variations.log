@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2021.10.18)  20 OCT 2021 17:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2021.10.18)  20 OCT 2021 17:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Mitochondrial_genome.tex
-(./Mitochondrial_genome.tex
+**Mitochondrial_variations.tex
+(./Mitochondrial_variations.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -376,8 +376,8 @@ decorations.text.code.tex
 \pgf@lib@dec@text@box=\box38
 )
 \tikz@lib@dec@te@box=\box39
-) (./Mitochondrial_genome.aux)
-\openout1 = `Mitochondrial_genome.aux'.
+) (./Mitochondrial_variations.aux)
+\openout1 = `Mitochondrial_variations.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -492,69 +492,29 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Overfull \hbox (2.16414pt too wide) in paragraph at lines 172--173
+Overfull \hbox (30.6959pt too wide) in paragraph at lines 923--924
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 13.16414pt on input line 174.
+LaTeX Warning: Float too large for page by 33.9946pt on input line 925.
 
-
-Overfull \hbox (27.89777pt too wide) in paragraph at lines 618--619
- [] 
- []
-
-
-LaTeX Warning: Float too large for page by 33.9946pt on input line 620.
-
-
-Overfull \hbox (30.6959pt too wide) in paragraph at lines 1204--1205
- [] 
- []
-
-
-LaTeX Warning: Float too large for page by 31.95877pt on input line 1206.
-
-
-Overfull \hbox (30.6959pt too wide) in paragraph at lines 1831--1832
- [] 
- []
-
-
-LaTeX Warning: Float too large for page by 32.65828pt on input line 1833.
-
-Missing character: There is no & in font nullfont!
-Missing character: There is no & in font nullfont!
-Missing character: There is no & in font nullfont!
-Missing character: There is no & in font nullfont!
-Missing character: There is no & in font nullfont!
-
-Overfull \hbox (24.97214pt too wide) in paragraph at lines 2436--2437
- [] 
- []
-
-
-LaTeX Warning: Float too large for page by 77.06773pt on input line 2438.
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
-(./Mitochondrial_genome.aux) ) 
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+(./Mitochondrial_variations.aux) ) 
 Here is how much of TeX's memory you used:
- 13561 strings out of 492982
- 285524 string characters out of 6134895
- 400661 words of memory out of 5000000
- 16909 multiletter control sequences out of 15000+600000
- 5448 words of font info for 20 fonts, out of 8000000 for 9000
+ 13443 strings out of 492982
+ 283365 string characters out of 6134895
+ 327536 words of memory out of 5000000
+ 16794 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,65p,422b,983s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.p
-fb>
-Output written on Mitochondrial_genome.pdf (5 pages, 84390 bytes).
+ 55i,6n,65p,426b,985s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb>
+Output written on Mitochondrial_variations.pdf (1 page, 30067 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 15 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
